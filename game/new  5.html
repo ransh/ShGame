@@ -1,0 +1,188 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+</head>
+<body bgcolor="white">
+<script language="JavaScript1.1">
+<!--
+var board;
+var flag;
+var a;
+var b;
+var ras1;
+board = new Array();
+board[0] = new Array();
+board[1] = new Array();
+board[2] = new Array();
+board[3] = new Array();
+board[4] = new Array();
+board[5] = new Array();
+board[6] = new Array();
+board[7] = new Array();
+board[0][0] = 2; board[0][1] = 3; board[0][2] = 4; board[0][3] = 5; board[0][4] = 6; board[0][5] = 4; board[0][6] = 3; board[0][7] = 2;
+board[1][0] = 1; board[1][1] = 1; board[1][2] = 1; board[1][3] = 1; board[1][4] = 1; board[1][5] = 1; board[1][6] = 1; board[1][6] = 1;
+board[2][0] = 0; board[2][1] = 0; board[2][2] = 0; board[2][3] = 0; board[2][4] = 0; board[2][5] = 0; board[2][6] = 0; board[2][7] = 0;
+board[3][0] = 0; board[3][1] = 0; board[3][2] = 0; board[3][3] = 0; board[3][4] = 0; board[3][5] = 0; board[3][6] = 0;board[3][7] = 0;
+board[4][0] = 0; board[4][1] = 0; board[4][2] = 0; board[4][3] = 0; board[4][4] = 0; board[4][5] = 0; board[4][6] = 0;board[4][7] = 0;
+board[5][0] = 0; board[5][1] = 0; board[5][2] = 0; board[5][3] = 0; board[5][4] = 0; board[5][5] = 0; board[5][6] = 0;board[5][7] = 0;
+board[6][0] = 7; board[6][1] = 7; board[6][2] = 7; board[6][3] = 7; board[6][4] = 7; board[6][5] = 7; board[6][6] = 7;board[6][7] = 7;
+board[7][0] = 8; board[7][1] = 9; board[7][2] = 10; board[7][3] = 11; board[7][4] = 12; board[7][5] = 10; board[7][6] = 9;board[7][7] = 8;
+
+function preload() {
+ this.length = preload.arguments.length;
+ for (var i = 0; i < this.length; i++) {
+  this[i] = new Image();
+  this[i].src = preload.arguments[i];
+ }
+}
+var pics = new preload("w_pesh1.png","w_lad2.png","w_kon3.png","w_slon4.png","w_ferz5.png",
+"w_kor6.png","b_pesh7.png","b_lad8.png","b_kon9.png","b_slon10.png","b_ferz11.png","b_kor12.png","pusto.png");
+ 
+function clicked(x,y)
+{ if (board[x][y] == 1 ) {board[x][y]=0; flag = 1 ; a = x; b = y ; draw(x,y,"pusto.png"); return;}
+ if (board[x][y] == 7 ) {board[x][y]=0; flag = 7 ; a = x; b = y ; draw(x,y,"pusto.png"); return;}
+ if (board[x][y] == 8 ) {board[x][y]=0; flag = 8 ; a = x; b = y ; draw(x,y,"pusto.png"); return;}
+  if (board[x][y] == 2 ) {board[x][y]=0; flag = 2 ; a = x; b = y ; draw(x,y,"pusto.png"); return;}
+  if (board[x][y] == 4 ) {board[x][y]=0; flag = 4 ; a = x; b = y ;ras1 = a - b; draw(x,y,"pusto.png"); return;}
+  if (board[x][y] == 10 ) {board[x][y]=0; flag = 10 ; a = x; b = y ; ras1 = a - b; draw(x,y,"pusto.png"); return;}
+  if (board[x][y] == 5 ) {board[x][y]=0; flag = 5 ; a = x; b = y ; ras1 = a - b; draw(x,y,"pusto.png"); return;}
+  if (board[x][y] == 11 ) {board[x][y]=0; flag = 11 ; a = x; b = y ; ras1 = a - b; draw(x,y,"pusto.png"); return;}
+  if (board[x][y] == 6 ) {board[x][y]=0; flag = 6 ; a = x; b = y ;  ras1 = a - b; draw(x,y,"pusto.png"); return;}
+  if (board[x][y] == 3 ) {board[x][y]=0; flag = 3 ; a = x; b = y ; draw(x,y,"pusto.png"); return;}
+  if (board[x][y] == 9 ) {board[x][y]=0; flag = 9 ; a = x; b = y ; draw(x,y,"pusto.png"); return;}
+  if (board[x][y] == 12 ) {board[x][y]=0; flag = 12 ; a = x; b = y ; draw(x,y,"pusto.png"); return;}
+  
+  
+  if ((board[x][y] == 0 && flag == 6 && y == b && (( x == a + 1 )|| (x == a - 1) ))|| (board[x][y] == 0 && flag == 6 && x == a && ((y == b + 1) || (y == b - 1)))|| 
+		(board[x][y] == 0 && flag == 6 && x == a +1  && ( (y == b + 1) || (y == b - 1))) || (board[x][y] == 0 && flag == 6 && x == a - 1 && ((y == b + 1) || (y == b - 1))))
+		{board[x][y] = 6; flag = 0 ; draw(x,y,"b_kor12.png"); return;}
+		
+if ((board[x][y] == 0 && flag == 12 && y == b && (( x == a + 1 )|| (x == a - 1) ))|| (board[x][y] == 0 && flag == 12 && x == a && ((y == b + 1) || (y == b - 1)))|| 
+		(board[x][y] == 0 && flag == 12 && x == a +1  && ( (y == b + 1) || (y == b - 1))) || (board[x][y] == 0 && flag == 12 && x == a - 1 && ((y == b + 1) || (y == b - 1))))
+		{board[x][y] = 12; flag = 0 ; draw(x,y,"w_kor6.png"); return;}
+  
+  if ((board[x][y] == 0 && flag == 3 && x == a + 1 && (( y == b + 2 )|| (y == b - 2) ))|| (board[x][y] == 0 && flag == 3 && x == a + 2 && ((y == b + 1) || (y == b - 1))) 
+		|| (board[x][y] == 0 && flag == 3 && x == a - 2 && ( (y == b + 1) || (y == b - 1))) || (board[x][y] == 0 && flag == 3 && x == a - 1 && ((y == b + 2) || (y == b - 2))))
+		{board[x][y] = 3; flag = 0 ; draw(x,y,"b_kon9.png"); return;}
+		
+if ((board[x][y] == 0 && flag == 9 && x == a + 1 && (( y == b + 2 )|| (y == b - 2) ))|| (board[x][y] == 0 && flag == 9 && x == a + 2 && ((y == b + 1) || (y == b - 1))) 
+		|| (board[x][y] == 0 && flag == 9 && x == a - 2 && ( (y == b + 1) || (y == b - 1))) || (board[x][y] == 0 && flag == 9 && x == a - 1 && ((y == b + 2) || (y == b - 2))))
+		{board[x][y] = 9; flag = 0 ; draw(x,y,"w_kon3.png"); return;} 	
+
+  if ((board[x][y] == 0 && flag == 4 && x - y == ras1) || (board[x][y] == 0 && flag == 4 && x - a == -(y - b)))
+		{board[x][y] = 4; flag = 0 ; draw(x,y,"b_slon10.png"); return;} 
+		
+ if ((board[x][y] == 0 && flag == 10 && x - y == ras1 ) || (board[x][y] == 0 && flag == 10 &&  x - a == -(y - b)))
+		{board[x][y] = 10; flag = 0 ; draw(x,y,"w_slon4.png"); return;} 
+		
+ if ((board[x][y] == 0 && flag == 5 && x - y == ras1) || (board[x][y] == 0 && flag == 5 && x - a == -(y - b)) || (board[x][y] == 0 && flag == 5 && y == b) 
+			||  (board[x][y] == 0 && flag == 5 && x == a))
+		{board[x][y] = 5; flag = 0 ; draw(x,y,"b_ferz11.png"); return;} 
+		
+ if ((board[x][y] == 0 && flag == 11 && x - y == ras1) || (board[x][y] == 0 && flag == 11 && x - a == -(y - b)) || (board[x][y] == 0 && flag == 11 && y == b) 
+			|| (board[x][y] == 0 && flag == 11 && x == a))
+		{board[x][y] = 11; flag = 0 ; draw(x,y, "w_ferz5.png"); return;} 
+ 
+ if ((board[x][y] == 0 && flag == 8 && y == b) || (board[x][y] == 0 && flag == 8 && x == a))
+		{board[x][y]=8; flag = 0 ; draw(x,y,"w_lad2.png"); return;} 
+		
+ if ((board[x][y] == 0 && flag == 2 && y == b) || (board[x][y] == 0 && flag == 2 && x == a))
+		{board[x][y]=2; flag = 0 ; draw(x,y,"b_lad8.png"); return;} 
+		
+  if (board[x][y] == 0 && flag == 7 && x == a-1 && y == b) 
+		{board[x][y]=7; flag = 0 ; draw(x,y,"w_pesh1.png"); return;} 
+	else { 
+	if (board[x][y] == 0 && flag == 1 && x == a+1 && y == b)
+			{board[x][y] = 1; flag = 0 ;draw(x,y,"b_pesh7.png"); return;} 
+		else {board[x][y] = 0; flag = 0 ; draw(x,y,"pusto.png"); return;}}
+  }
+ 
+function draw(x,y,name) {
+ document.images["kletka"+x+""+y].src = name;
+} 
+ // -->
+</script>
+
+<table width="100" cellspacing="0" cellpadding="0" border="1" align=center>
+<tr id = "A">
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(0,0)"><img name="kletka00" src="b_lad8.png"> </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(0,1)"><img name="kletka01" src="b_kon9.png"> </a> </td>
+  <td bgcolor=LightYellow align=center><a href="javascript:clicked(0,2)"><img name="kletka02" src="b_slon10.png"> </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(0,3)"><img name="kletka03" src="b_ferz11.png"> </a> </td>
+  <td bgcolor=LightYellow align=center><a href="javascript:clicked(0,4)"><img name="kletka04" src="b_kor12.png">  </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(0,5)"><img name="kletka05" src="b_slon10.png">  </a> </td>
+  <td bgcolor=LightYellow align=center><a href="javascript:clicked(0,6)"><img name="kletka06" src="b_kon9.png">  </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(0,7)"><img name="kletka07" src="b_lad8.png">  </a> </td>
+</tr>
+<tr id = "B">
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(1,0)"><img name="kletka10" src="b_pesh7.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(1,1)"><img name="kletka11" src="b_pesh7.png">  </a> </td>
+  <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(1,2)"><img name="kletka12" src="b_pesh7.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(1,3)"><img name="kletka13" src="b_pesh7.png">  </a> </td>
+  <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(1,4)"><img name="kletka14" src="b_pesh7.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(1,5)"><img name="kletka15" src="b_pesh7.png">  </a> </td>
+  <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(1,6)"><img name="kletka16" src="b_pesh7.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(1,7)"><img name="kletka17" src="b_pesh7.png">  </a> </td>
+</tr>
+<tr id = "C">
+<td bgcolor=LightYellow align=center><a href="javascript:clicked(2,0)"><img name="kletka20" src="pusto.png"> </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(2,1)"><img name="kletka21" src="pusto.png"> </a> </td>
+  <td bgcolor=LightYellow align=center><a href="javascript:clicked(2,2)"><img name="kletka22" src="pusto.png"> </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(2,3)"><img name="kletka23" src="pusto.png"> </a> </td>
+  <td bgcolor=LightYellow align=center><a href="javascript:clicked(2,4)"><img name="kletka24" src="pusto.png">  </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(2,5)"><img name="kletka25" src="pusto.png">  </a> </td>
+  <td bgcolor=LightYellow align=center><a href="javascript:clicked(2,6)"><img name="kletka26" src="pusto.png">  </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(2,7)"><img name="kletka27" src="pusto.png">  </a> </td>
+</tr>
+<tr id = "D">
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(3,0)"><img name="kletka30" src="pusto.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(3,1)"><img name="kletka31" src="pusto.png">  </a> </td>
+  <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(3,2)"><img name="kletka32" src="pusto.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(3,3)"><img name="kletka33" src="pusto.png">  </a> </td>
+  <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(3,4)"><img name="kletka34" src="pusto.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(3,5)"><img name="kletka35" src="pusto.png">  </a> </td>
+  <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(3,6)"><img name="kletka36" src="pusto.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(3,7)"><img name="kletka37" src="pusto.png">  </a> </td>
+</tr>
+<tr id = "E">
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(4,0)"><img name="kletka40" src="pusto.png"> </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(4,1)"><img name="kletka41" src="pusto.png"> </a> </td>
+  <td bgcolor=LightYellow align=center><a href="javascript:clicked(4,2)"><img name="kletka42" src="pusto.png"> </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(4,3)"><img name="kletka43" src="pusto.png"> </a> </td>
+  <td bgcolor=LightYellow align=center><a href="javascript:clicked(4,4)"><img name="kletka44" src="pusto.png">  </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(4,5)"><img name="kletka45" src="pusto.png">  </a> </td>
+  <td bgcolor=LightYellow align=center><a href="javascript:clicked(4,6)"><img name="kletka46" src="pusto.png">  </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(4,7)"><img name="kletka47" src="pusto.png">  </a> </td>
+</tr>
+<tr id = "F">
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(5,0)"><img name="kletka50" src="pusto.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(5,1)"><img name="kletka51" src="pusto.png">  </a> </td>
+  <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(5,2)"><img name="kletka52" src="pusto.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(5,3)"><img name="kletka53" src="pusto.png">  </a> </td>
+  <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(5,4)"><img name="kletka54" src="pusto.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(5,5)"><img name="kletka55" src="pusto.png">  </a> </td>
+  <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(5,6)"><img name="kletka56" src="pusto.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(5,7)"><img name="kletka57" src="pusto.png">  </a> </td>
+</tr>
+<tr id = "G">
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(6,0)"><img name="kletka60" src="w_pesh1.png"> </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(6,1)"><img name="kletka61" src="w_pesh1.png"> </a> </td>
+  <td bgcolor=LightYellow align=center><a href="javascript:clicked(6,2)"><img name="kletka62" src="w_pesh1.png"> </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(6,3)"><img name="kletka63" src="w_pesh1.png"> </a> </td>
+  <td bgcolor=LightYellow align=center><a href="javascript:clicked(6,4)"><img name="kletka64" src="w_pesh1.png">  </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(6,5)"><img name="kletka65" src="w_pesh1.png">  </a> </td>
+  <td bgcolor=LightYellow align=center><a href="javascript:clicked(6,6)"><img name="kletka66" src="w_pesh1.png">  </a></td>
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(6,7)"><img name="kletka67" src="w_pesh1.png">  </a> </td>
+</tr>
+<tr id = "H">
+ <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(7,0)"><img name="kletka70" src="w_lad2.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(7,1)"><img name="kletka71" src="w_kon3.png">  </a> </td>
+  <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(7,2)"><img name="kletka72" src="w_slon4.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(7,3)"><img name="kletka73" src="w_ferz5.png">  </a> </td>
+  <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(7,4)"><img name="kletka74" src="w_kor6.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(7,5)"><img name="kletka75" src="w_slon4.png">  </a> </td>
+  <td bgcolor=DarkGoldenrod align=center><a href="javascript:clicked(7,6)"><img name="kletka76" src="w_kon3.png">  </a></td>
+ <td bgcolor=LightYellow align=center><a href="javascript:clicked(7,7)"><img name="kletka77" src="w_lad2.png">  </a> </td>
+</tr>
+</table>
+</body></html>
